@@ -4,6 +4,7 @@ import "./App.css";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "bootstrap/dist/css/bootstrap.min.css";
+import md5 from 'md5';
 
 function App() {
   const [inputs, setInputs] = useState({});
@@ -15,8 +16,14 @@ function App() {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(inputs.username);
-    console.log(inputs.age);
+    console.log(md5(inputs.password));
+    
   };
+  function Welcome(props) {
+    return <h1>Hello, {props.name}<br></br>Password is {props.password}</h1>;
+  }
+  
+  
   return (
     <div className="container">
       {" "}
@@ -39,8 +46,8 @@ function App() {
           <Form.Label> Password </Form.Label>{" "}
           <Form.Control
             type="password"
-            name="age"
-            value={inputs.age || ""}
+            name="password"
+            value={inputs.password || ""}
             onChange={handleChange}
             placeholder="Password"
           />
@@ -52,7 +59,11 @@ function App() {
           Submit{" "}
         </Button>{" "}
       </Form>
+      <div>
+      <Welcome name={inputs.username} password={inputs.password}/>
     </div>
+    </div>
+    
   );
 }
 
