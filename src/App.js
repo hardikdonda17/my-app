@@ -8,16 +8,19 @@ import md5 from 'md5';
 import TableData from './TableData';
 
 function App() {
-  var id=1;
+
+  
   const [inputs, setInputs] = useState({});
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
   };
+  var id=1;
   const handleSubmit = (event) => {
+
     event.preventDefault();
-    id++;
+
     console.log(inputs);
     console.log(data);
     console.log(inputs.id);
@@ -102,7 +105,7 @@ function App() {
         </Form.Group><Form.Group className="mb-3" controlId="formBasicPhone">
           <Form.Label> Phone </Form.Label>{" "}
           <Form.Control
-            type="tel"
+            type="text"
             placeholder="Enter your Phone Number"
             name="phone"
             value={inputs.Phone || ""}
