@@ -5,8 +5,10 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "bootstrap/dist/css/bootstrap.min.css";
 import md5 from 'md5';
+import TableData from './TableData';
 
 function App() {
+  var id=1;
   const [inputs, setInputs] = useState({});
   const handleChange = (event) => {
     const name = event.target.name;
@@ -15,43 +17,98 @@ function App() {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(inputs.username);
-    console.log(md5(inputs.password));
+    id++;
+    console.log(inputs);
+    console.log(data);
+    console.log(inputs.id);
+    console.log(inputs.Fname);
+    console.log(inputs.Lname);
+    console.log(inputs.email);
+    console.log(inputs.phone);
     
   };
-  function Welcome(props) {
-    return <h1>Hello, {props.name}<br></br>Password is {props.password}</h1>;
-  }
-  
+  const  data = [
+    {
+      Id : 20 ,
+      fname: 'Hardik',
+      lname :'donda',
+      email :'hardik@gmail.com',
+      phone : 8757648723
+    },
+    {
+      Id : 21 ,
+      fname: 'Sandip',
+      lname :'donda',
+      email :'sandip@gmail.com',
+      phone : 8757648723
+    },
+    {
+      Id : 22 ,
+      fname: 'Kishan',
+      lname :'donda',
+      email :'kishan@gmail.com',
+      phone : 8757648723
+    },
+    {
+      Id : 23 ,
+        fname: 'Shubham',
+        lname :'donda',
+        email :'shubham@gmail.com',
+        phone : 8757648723
+    },
+    {
+      Id : 24 ,
+      fname: 'Mohit',
+      lname :'donda',
+      email :'mohit@gmail.com',
+      phone : 8757648723
+    },
+]
   
   return (
+    <>
+    <TableData value={data}/>
     <div className="container">
       {" "}
       <Form onSubmit={handleSubmit} className="mt-5">
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label> Email address </Form.Label>{" "}
+        <Form.Group className="mb-3" controlId="formBasicFname">
+          <Form.Label> First Name </Form.Label>{" "}
           <Form.Control
-            type="email"
-            placeholder="Enter email"
             type="text"
-            name="username"
-            value={inputs.username || ""}
+            placeholder="Enter your First Name"
+            name="Fname"
+            value={inputs.Fname || ""}
             onChange={handleChange}
           />{" "}
-          <Form.Text className="text-muted">
-            We 'll never share your email with anyone else.{" "}
-          </Form.Text>{" "}
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label> Password </Form.Label>{" "}
+        <Form.Group className="mb-3" controlId="formBasicLname">
+          <Form.Label> Last Name </Form.Label>{" "}
           <Form.Control
-            type="password"
-            name="password"
-            value={inputs.password || ""}
+            type="text"
+            placeholder="Enter your Last Name"
+            name="Lname"
+            value={inputs.Lname || ""}
             onChange={handleChange}
-            placeholder="Password"
-          />
-        </Form.Group>{" "}
+          />{" "}
+        </Form.Group><Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label> Email </Form.Label>{" "}
+          <Form.Control
+            type="email"
+            placeholder="Enter your Email"
+            name="email"
+            value={inputs.email || ""}
+            onChange={handleChange}
+          />{" "}
+        </Form.Group><Form.Group className="mb-3" controlId="formBasicPhone">
+          <Form.Label> Phone </Form.Label>{" "}
+          <Form.Control
+            type="tel"
+            placeholder="Enter your Phone Number"
+            name="phone"
+            value={inputs.Phone || ""}
+            onChange={handleChange}
+          />{" "}
+        </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <Form.Check type="checkbox" label="Check me out" />
         </Form.Group>{" "}
@@ -60,9 +117,14 @@ function App() {
         </Button>{" "}
       </Form>
       <div>
-      <Welcome name={inputs.username} password={inputs.password}/>
     </div>
+    
     </div>
+    
+    
+    
+    </>
+    
     
   );
 }
